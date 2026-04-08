@@ -171,6 +171,24 @@
   font-size: 1rem;
 }
 
+.paper-body strong,
+.paper-body b {
+  color: #b07b2c;
+  font-weight: 700;
+}
+
+.paper-body-card {
+  background: #efe7da;
+  border: 1px solid #d8c8b3;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin: 0 0 1.2rem;
+}
+
+.paper-body-card p {
+  margin: 0;
+}
+
 .section-spacer {
   height: 1.25rem;
 }
@@ -359,6 +377,12 @@
 
   .content-section p {
     font-size: 0.95rem;
+  }
+
+  .paper-body-card {
+    padding: 16px 18px;
+    margin-bottom: 1rem;
+    border-radius: 12px;
   }
 
   .results-table {
