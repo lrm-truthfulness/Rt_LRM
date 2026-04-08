@@ -2,7 +2,6 @@ import './App.css'
 import frameworkImg from './assets/framework.png'
 import lrmEfficiencyImg from './assets/lrm_efficiency_3.png'
 import lrmVsLlmThreeImg from './assets/lrm_vs_llm_three_dimensions.png'
-import projectContentMd from '../../project_content.md?raw'
 
 function escapeHtml(input: string) {
   return input
@@ -39,16 +38,6 @@ function renderInlineMarkdown(md: string) {
   }
 
   return out
-}
-
-function extractAbstract(md: string) {
-  const m = md.match(/Abstract:\s*([\s\S]*?)\n\s*(?:Paper:|Code:)/i)
-  if (!m) return ''
-  return m[1]
-    .replace(/\r\n/g, '\n')
-    .trim()
-    // Keep as single paragraph so it matches the current UI layout.
-    .replace(/\n+/g, ' ')
 }
 
 const taskOverviewRows = [
@@ -132,7 +121,8 @@ const resultsFigures = [
   },
 ]
 
-const abstractMd = extractAbstract(projectContentMd)
+const abstractMd =
+  'Large Reasoning Models (LRMs) have emerged as a powerful advancement in multi-step reasoning tasks, offering enhanced transparency and logical consistency through explicit chains of thought (CoT). However, these models introduce novel safety and reliability risks, such as **CoT-hijacking** and **prompt-induced** inefficiencies, which are not fully captured by existing evaluation methods. To address this gap, we propose Rt-LRM, a unified benchmark designed to assess the trustworthiness of LRMs. Rt-LRM evaluates three core dimensions: **truthfulness, safety and efficiency**. Beyond metric-based evaluation, we further introduce the training paradigm as a key analytical perspective to investigate the systematic impact of different training strategies on model trustworthiness. We achieve this by designing a curated suite of **30 reasoning tasks** from an observational standpoint. We conduct extensive experiments on **26 models** and identify several valuable insights into the trustworthiness of LRMs. For example, LRMs generally face trustworthiness challenges and tend to be more fragile than Large Language Models (LLMs) when encountering reasoning-induced risks. These findings uncover previously underexplored vulnerabilities and highlight the need for more targeted evaluations. In addition, we release a scalable toolbox for standardized trustworthiness research to support future advancements in this important field.'
 const abstractHtml = renderInlineMarkdown(abstractMd)
 
 const methodIntroMd =
@@ -221,7 +211,7 @@ function App() {
       <section id="method" className="content-section">
         <h2>Method</h2>
         {methodIntroHtml ? (
-          <div className="paper-body">
+          <div className="paper-body paper-body-card">
             <p
               dangerouslySetInnerHTML={{
                 __html: methodIntroHtml,
@@ -284,7 +274,7 @@ function App() {
       <section id="results" className="content-section">
         <h2>Results</h2>
         {mainResultsIntroHtml ? (
-          <div className="paper-body">
+          <div className="paper-body paper-body-card">
             <p
               dangerouslySetInnerHTML={{
                 __html: mainResultsIntroHtml,
